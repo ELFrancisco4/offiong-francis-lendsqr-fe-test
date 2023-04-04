@@ -1,5 +1,6 @@
 import TableElement from "../../components/Dashboard/atoms/TableElement";
 import UserMetric from "../../components/Dashboard/atoms/UserMetric";
+import Pagination from "../../components/Dashboard/molecules/Pagination";
 import "../../styles/dashboardpage.scss";
 import UserTable from "./../../components/Dashboard/molecules/UserTable";
 const DashBoard = () => {
@@ -23,6 +24,8 @@ const DashBoard = () => {
         <TableElement />
         <TableElement />
       </UserTable>
+
+      <Pagination/>
     </div>
   );
 };

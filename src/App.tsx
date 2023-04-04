@@ -2,11 +2,12 @@ import "./App.scss";
 import { RouterProvider, Outlet, createBrowserRouter } from "react-router-dom";
 import LoginPage from "./pages/loginPage/LoginPage";
 import DashBoard from "./pages/dashboardPage/DashBoard";
-import UserPage from "./pages/userPage/UserPage";
-import UserDetails from "./pages/detailsPage/UserDetails";
+
 import Error404 from "./pages/error404/Error404";
 import NavBar from "./components/NavBar/molecules/NavBar";
 import SidePanel from "./components/SidePanel/molecules/SidePanel";
+import UserPage from "./pages/filtersPage/UserPage";
+import UserDetailsPage from "./pages/userDetailsPage/UserDetailsPage";
 const App = () => {
   const DashboardLayout = (): JSX.Element => {
     return (
@@ -34,11 +35,11 @@ const App = () => {
         },
         {
           path: "/dashboard/user",
-          element: <UserPage />,
+          element: <UserPage/> ,
         },
         {
           path: "/dashboard/details",
-          element: <UserDetails />,
+          element: <UserDetailsPage/>,
         },
       ],
     },
