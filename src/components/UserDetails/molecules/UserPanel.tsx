@@ -14,7 +14,7 @@ const UserPanel = () => {
       <div className="user_panel_container">
         <div className="user_panel_user">
           <div className="user_panel_user_avatar">
-            <img src={profile.avatar}  />
+            {/* <img src={profile.avatar}  /> */}
           </div>
 
           <div className="user_panel_user_account_name">

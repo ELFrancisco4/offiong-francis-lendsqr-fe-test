@@ -1,24 +1,48 @@
 import { ReactComponent as ArrowLeft } from "../../../assets/VectorArrowLeft.svg";
 import { ReactComponent as ArrowRight } from "../../../assets/VectorArrowRight.svg";
-const Pagination = () => {
+import { useState } from "react";
+
+type PaginationProps = {
+  dataPerPage: number;
+  totalData: number;
+  paginate: (num: number) => number;
+};
+const Pagination = ({ dataPerPage, totalData, paginate }: PaginationProps) => {
+  const pageNumbers = [];
+
+  for (let i = 1; i <= Math.ceil(totalData / dataPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
   return (
     <div className="pagination_panel">
       <div>
         <p>Showing</p>{" "}
         <select>
-          <option>100 </option>
+          {pageNumbers.map((num) => (
+            <option key={num}>{num}</option>
+          ))}
         </select>{" "}
-        out of 100
+        out of {pageNumbers.length}
       </div>
-      <div>
-        <span>
-          <ArrowLeft />
-        </span>
-        1 2 3 ... 15 16
-        <span>
-          <ArrowRight />
-        </span>
-      </div>
+      <span>
+        <ArrowLeft />
+
+        <ul>
+          {pageNumbers.map((number) => (
+            <li
+              onClick={() => {
+                paginate(number);
+              }}
+              key={number}
+            >
+              {number}
+            </li>
+          ))}
+        </ul>
+
+        <ArrowRight />
+      </span>
     </div>
   );
 };

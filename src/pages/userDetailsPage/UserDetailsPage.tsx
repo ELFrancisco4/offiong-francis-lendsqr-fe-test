@@ -28,14 +28,13 @@ const UserDetailsPage = () => {
         setData(result.data);
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
-
-      setIsLoading(false);
     };
-  
-    fetchData()
-    console.log(id)
 
+    fetchData();
+    console.log(id);
   }, []);
   return (
     <>
@@ -75,27 +74,24 @@ const UserDetailsPage = () => {
 
 export default UserDetailsPage;
 
-
 // const debouncedFetchData = debounce(fetchData, 500);
 // debouncedFetchData();
 
+// const debounce = <T extends (...args: any[]) => any>(
+//   fn: T,
+//   delay: number
+// ) => {
+//   let timeoutId: ReturnType<typeof setTimeout> | null;
 
+//   return (...args: Parameters<T>): Promise<ReturnType<T>> =>
+//     new Promise((resolve) => {
+//       if (timeoutId) {
+//         clearTimeout(timeoutId);
+//       }
 
-  // const debounce = <T extends (...args: any[]) => any>(
-  //   fn: T,
-  //   delay: number
-  // ) => {
-  //   let timeoutId: ReturnType<typeof setTimeout> | null;
-
-  //   return (...args: Parameters<T>): Promise<ReturnType<T>> =>
-  //     new Promise((resolve) => {
-  //       if (timeoutId) {
-  //         clearTimeout(timeoutId);
-  //       }
-
-  //       timeoutId = setTimeout(() => {
-  //         timeoutId = null;
-  //         resolve(fn(...args));
-  //       }, delay);
-  //     });
-  // };
+//       timeoutId = setTimeout(() => {
+//         timeoutId = null;
+//         resolve(fn(...args));
+//       }, delay);
+//     });
+// };

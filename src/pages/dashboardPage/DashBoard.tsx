@@ -5,9 +5,15 @@ import "../../styles/dashboardpage.scss";
 import UserTable from "./../../components/Dashboard/molecules/UserTable";
 import { UserContext } from "../../context/globalContext";
 import { useContext } from "react";
+import { Loading } from "../../components/UserDetails/atoms/Loading";
 const DashBoard = () => {
-  const details: any = useContext(UserContext);
+  const { data, currentData, isLoading, dataPerPage, setCurrentPage } =
+    useContext(UserContext);
 
+  console.log(currentData);
+  console.log(isLoading);
+
+  const paginate = (pageNumber: number): number => setCurrentPage(pageNumber);
   return (
     <div className="dashboard">
       <h1>Users</h1>
@@ -18,14 +24,32 @@ const DashBoard = () => {
         <UserMetric />
       </div>
       <UserTable>
-        {
-          details.map((user:any) => {
-            return <TableElement key={user.id} date={user.date} email={user.email} username={user.userName} organization={user.orgName} phoneNumber={user.phoneNumber} status="Active" />
-          } )
-        }
+        {isLoading ? (
+          <tbody>
+            <Loading />
+          </tbody>
+        ) : (
+          currentData.map((user: any) => {
+            return (
+              <TableElement
+                key={user.id}
+                date={user.date}
+                email={user.email}
+                username={user.userName}
+                organization={user.orgName}
+                phoneNumber={user.phoneNumber}
+                status="Active"
+              />
+            );
+          })
+        )}
       </UserTable>
 
-      <Pagination />
+      <Pagination
+        dataPerPage={dataPerPage}
+        totalData={data.length}
+        paginate={paginate}
+      />
     </div>
   );
 };
