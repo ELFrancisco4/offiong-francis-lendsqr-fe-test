@@ -1,4 +1,3 @@
-import { Children } from "react";
 import { ReactComponent as Filter } from "../../../assets/VectorFilter.svg";
 
 
@@ -6,6 +5,8 @@ type TableProps = {
     children: any
 }
 const UserTable = ({children}: TableProps) => {
+
+
   return (
     <div>
       {/* Create a html table with 6 columns and 9 rows */}

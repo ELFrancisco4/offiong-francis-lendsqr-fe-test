@@ -1,35 +1,36 @@
 import "../styles/details.scss";
 import React from "react";
 import Table from "./Table";
-import axios from "axios";
+import { useContext } from "react";
+import { DetailsContext } from "../../../context/globalContext";
+type myRow = {
+  row: {
+    original: { profile: { firstName: String; lastName: String } };
+    groupByVal: any;
+  };
+};
 
 const UserDetails = () => {
-  const [data, setData] = React.useState<any>({})
-  
-  React.useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios.get(
-        "https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/1"
-      );
-     setData(result.data)
-     console.log(data)
-     
-    };
+  const data = useContext(DetailsContext);
 
-    fetchData();
-  });
-  const columns = React.useMemo(
+  const column1 = React.useMemo(
     () => [
       {
         Header: "Personal Information",
         columns: [
           {
             Header: "Full name",
-            accessor: "firstName lastName",
+            accessor: "profile.firstName",
+            Cell: ({ row }: myRow) =>
+              row.original.profile
+                ? row.original.profile.firstName +
+                  " " +
+                  row.original.profile.lastName
+                : row.groupByVal,
           },
           {
             Header: "Phone number",
-            accessor: "phoneNumber",
+            accessor: "profile.phoneNumber",
           },
           {
             Header: "Email Address",
@@ -38,85 +39,99 @@ const UserDetails = () => {
 
           {
             Header: "BVN",
-            accessor: "bvn",
+            accessor: "profile.bvn",
           },
 
           {
             Header: "Gender",
-            accessor: "gender",
+            accessor: "profile.gender",
           },
 
           {
             Header: "Address",
-            accessor: "address",
+            accessor: "profile.address",
           },
         ],
       },
-
+    ],
+    []
+  );
+  const column2 = React.useMemo(
+    () => [
       {
         Header: "Education and Employment",
         columns: [
           {
             Header: "Level of Education",
-            accessor: "level",
+            accessor: "education.level",
           },
           {
             Header: "Employment Status",
-            accessor: "employmentStatus",
+            accessor: "education.employmentStatus",
           },
           {
             Header: "Sector of Employment",
-            accessor: "sector",
+            accessor: "education.sector",
           },
           {
             Header: "Duration of Employment",
-            accessor: "duration",
+            accessor: "education.duration",
           },
           {
             Header: "Office Email",
-            accessor: "officeEmail",
+            accessor: "education.officeEmail",
           },
           {
             Header: "Monthly Income",
-            accessor: "monthlyIncome",
+            accessor: "education.monthlyIncome",
           },
         ],
       },
+    ],
+    []
+  );
+  const column3 = React.useMemo(
+    () => [
       {
         Header: "Socials",
         columns: [
           {
             Header: "TWITTER",
-            accessor: "twitter",
+            accessor: "socials.twitter",
           },
           {
             Header: "FACEBOOK",
-            accessor: "facebook",
+            accessor: "socials.facebook",
           },
           {
             Header: "INSTAGRAM",
-            accessor: "instagram",
+            accessor: "socials.instagram",
           },
         ],
       },
+    ],
+    []
+  );
+  const column4 = React.useMemo(
+    () => [
       {
         Header: "Guarantor",
         columns: [
           {
             Header: "Full Name",
-            accessor: "firstName lastName",
+            accessor: "guarantor.firstName",
           },
           {
             Header: "Phone Number",
-            accessor: "phoneNumber",
+            accessor: "guarantor.phoneNumber",
           },
           {
             Header: "Gender",
-            accessor: "gender",
+            accessor: "guarantor.gender",
           },
           {
             Header: "Address",
-            accessor: "address",
+            accessor: "guarantor.address",
           },
         ],
       },
@@ -124,11 +139,16 @@ const UserDetails = () => {
     []
   );
 
-  let dataArray = [data]
-
+  let dataArray = [data];
   return (
     <div className="user_details">
-      <Table columns={columns} data={dataArray} />
+      <Table columns={column1} data={dataArray} />
+      <hr />
+      <Table columns={column2} data={dataArray} />
+      <hr />
+      <Table columns={column3} data={dataArray} />
+      <hr />
+      <Table columns={column4} data={dataArray} />
     </div>
   );
 };

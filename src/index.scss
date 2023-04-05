@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700;800&display=swap");
+
 :root {
   --header-color: #213f7d;
   --theme-blue: #39cdcc;
@@ -8,12 +10,11 @@
   --theme-peach: #f7836e;
   --theme-pink: #ed80ff;
   --grey: #545f7d26;
-  --theme-green: #39CD62;
-  --light-green: #F3FCF6;
+  --theme-green: #39cd62;
+  --light-green: #f3fcf6;
   --text-color: #545f7d;
-  --dashboard-background: #E5E5E5;
+  --dashboard-background: #e5e5e5;
   --black: #000000;
-  
 }
 
 * {
@@ -33,7 +34,8 @@ h5,
 h6 {
   color: var(--header-color);
 }
-p, span {
+p,
+span {
   color: var(--text-color);
 }
 
@@ -46,11 +48,11 @@ button {
 ul {
   list-style: none;
 }
-input{
+input {
   outline: none;
 }
 
-.active{
+.active {
   background-color: var(--theme-blue);
   opacity: 0.3;
 }

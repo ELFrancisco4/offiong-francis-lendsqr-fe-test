@@ -1,19 +1,24 @@
-import { ReactComponent as Avatar } from "../../../assets/VectorProfilePlaceholder.svg";
 import "../styles/details.scss";
 import { ReactComponent as EmptyStar } from "../../../assets/VectorEmptyStar.svg";
 import { ReactComponent as FilledStar } from "../../../assets/VectorFilledStar.svg";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { DetailsContext } from "../../../context/globalContext";
+
 const UserPanel = () => {
+  const data: any = useContext(DetailsContext);
+  const {profile, userName, accountBalance, accountNumber } = data
+  console.log(data);
   return (
     <div className="user_panel">
       <div className="user_panel_container">
         <div className="user_panel_user">
           <div className="user_panel_user_avatar">
-            <Avatar />
+            <img src={profile.avatar}  />
           </div>
 
           <div className="user_panel_user_account_name">
-            <h2>Grace Effiom</h2>
+            <h2>{userName}</h2>
             <span>LSQFf587g90</span>
           </div>
 
@@ -27,8 +32,8 @@ const UserPanel = () => {
           </div>
 
           <div className="user_panel_user_account_balance">
-            <h3>₦200,000.00</h3>
-            <p>9912345678/Providus Bank</p>
+            <h3>NGN {accountBalance}</h3>
+            <p>{accountNumber}/Providus Bank</p>
           </div>
         </div>
 
