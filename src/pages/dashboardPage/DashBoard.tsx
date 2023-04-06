@@ -13,10 +13,6 @@ import { ReactComponent as LoanRecord } from "../../assets/VectorLoanRecord.svg"
 const DashBoard = () => {
   const { data, currentData, isLoading, dataPerPage, setCurrentPage } =
     useContext(UserContext);
-
-  console.log(currentData);
-  console.log(isLoading);
-
   const paginate = (pageNumber: number): number => setCurrentPage(pageNumber);
   return (
     <div className="dashboard">
