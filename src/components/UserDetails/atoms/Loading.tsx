@@ -1,9 +1,3 @@
-import React from "react";
-
 export const Loading = () => {
-  return (
-    <tr>
-      <td>Loading </td>{" "}
-    </tr>
-  );
+  return <h1>Loading...</h1>;
 };

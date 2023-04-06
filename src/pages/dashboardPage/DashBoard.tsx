@@ -40,15 +40,19 @@ const DashBoard = () => {
         </UserMetric>
         <UserMetric text="Users with Savings" metric={350}>
           <span>
-            <FaCoins/>
+            <FaCoins />
           </span>
         </UserMetric>
       </div>
       <UserTable>
         {isLoading ? (
-          <tbody>
-            <Loading />
-          </tbody>
+            <thead>
+            <tr>
+              <td colSpan={5}>
+                <Loading />
+              </td>
+            </tr>
+          </thead>
         ) : (
           currentData.map((user: any) => {
             return (
