@@ -29,7 +29,7 @@ const App = () => {
       setIsLoading(false);
     };
     getUserDetailsFromApi();
-  }, [data]);
+  }, []);
 
   //Get current data
   const indexOfLastData = currentPage * dataPerPage;
@@ -65,7 +65,7 @@ const App = () => {
           element: <DashBoard />,
         },
         {
-          path: "/dashboard/data/:id",
+          path: "/dashboard/details/:id",
           element: <UserDetailsPage />,
         },
       ],

@@ -8,13 +8,12 @@ import { DetailsContext } from "../../../context/globalContext";
 const UserPanel = () => {
   const data: any = useContext(DetailsContext);
   const {profile, userName, accountBalance, accountNumber } = data
-  console.log(data);
   return (
     <div className="user_panel">
       <div className="user_panel_container">
         <div className="user_panel_user">
           <div className="user_panel_user_avatar">
-            {/* <img src={profile.avatar}  /> */}
+            <img src={profile? profile.avatar: null} alt="User Profile Picture" />
           </div>
 
           <div className="user_panel_user_account_name">

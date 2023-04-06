@@ -6,6 +6,10 @@ import UserTable from "./../../components/Dashboard/molecules/UserTable";
 import { UserContext } from "../../context/globalContext";
 import { useContext } from "react";
 import { Loading } from "../../components/UserDetails/atoms/Loading";
+import { HiUsers } from "react-icons/hi";
+import { MdGroups3 } from "react-icons/md";
+import { FaCoins } from "react-icons/fa";
+import { ReactComponent as LoanRecord } from "../../assets/VectorLoanRecord.svg";
 const DashBoard = () => {
   const { data, currentData, isLoading, dataPerPage, setCurrentPage } =
     useContext(UserContext);
@@ -18,10 +22,27 @@ const DashBoard = () => {
     <div className="dashboard">
       <h1>Users</h1>
       <div className="dashboard_metrics">
-        <UserMetric />
-        <UserMetric />
-        <UserMetric />
-        <UserMetric />
+        <UserMetric metric={500} text="Users">
+          <span>
+            <HiUsers />
+          </span>
+        </UserMetric>
+
+        <UserMetric metric={200} text="Active Users">
+          <span>
+            <MdGroups3 />
+          </span>
+        </UserMetric>
+        <UserMetric metric={300} text="Users with Loans">
+          <span>
+            <LoanRecord />
+          </span>
+        </UserMetric>
+        <UserMetric text="Users with Savings" metric={350}>
+          <span>
+            <FaCoins/>
+          </span>
+        </UserMetric>
       </div>
       <UserTable>
         {isLoading ? (

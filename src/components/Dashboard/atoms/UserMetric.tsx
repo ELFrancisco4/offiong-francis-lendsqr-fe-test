@@ -1,10 +1,15 @@
-import {ReactComponent as UsersIcon} from "../../../assets/Users.svg"
-const UserMetric = () => {
+type UserMetricProps = {
+  text: string;
+  metric: number
+  children: JSX.Element
+}
+
+const UserMetric = ({text, metric, children}: UserMetricProps) => {
   return (
     <div>
-        <UsersIcon/>
-        <p>Users</p>
-        <span>500</span>
+        {children}
+        <p>{text}</p>
+        <span>{metric}</span>
     </div>
   )
 }
