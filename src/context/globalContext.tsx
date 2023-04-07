@@ -42,6 +42,7 @@ const AppContext = createContext({} as AppStatesTypes);
        "https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users"
      );
      setDetails2(result.data);
+     localStorage.setItem('users', JSON.stringify(result.data))
      setIsLoading(false);
    };
    getUserDetailsFromApi();
@@ -57,6 +58,7 @@ const AppContext = createContext({} as AppStatesTypes);
        `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/${selectedUser}`
      );
      setDetails(result.data), setIsLoading(false);
+     localStorage.setItem('user', JSON.stringify(result.data))
    }
    catch(error){
     console.log(error)
