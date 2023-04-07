@@ -1,5 +1,6 @@
 .navigation {
   background-color: white;
+  width: 100%;
   overflow: hidden;
   height: 10vh;
   padding: 1em;
@@ -36,6 +37,34 @@
       border-radius: 0px;
     }
   }
+  
+  @media (max-width: 1024px) { /* for tablets */
+    ul {
+      width: 30%;
+    }
+  }
+
+  @media (max-width: 768px) { /* for mobile devices */
+    height: auto;
+    padding: 0.5em;
+    ul {
+      width: 40%;
+      justify-content: space-between;
+    }
+    .search {
+      margin-left: 5%;
+    }
+  }
+
+  @media (max-width: 480px) { /* for smaller mobile devices */
+    ul {
+      width: 60%;
+      justify-content: space-around;
+    }
+    .search {
+      margin-left: 10%;
+    }
+  }
 }
 
 .search {
@@ -56,9 +85,17 @@
   input {
     height: 40px;
     max-width: 400px;
-    width: 80%;
+    width: 100%;
     padding: 0.5em;
     border-radius: 8px;
     border: solid 2px var(--grey);
+  }
+
+  @media (max-width: 768px) { /* for mobile devices */
+    input {
+      max-width: none;
+      width: 100%;
+      margin-left: 1em;
+    }
   }
 }

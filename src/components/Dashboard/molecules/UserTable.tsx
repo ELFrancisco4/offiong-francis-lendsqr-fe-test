@@ -1,4 +1,3 @@
-import { ReactComponent as Filter } from "../../../assets/VectorFilter.svg";
 import React, { useContext, useState } from "react";
 import {
   usePagination,
@@ -12,11 +11,9 @@ import { Loading } from "../../UserDetails/atoms/Loading";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../../context/globalContext";
 import {BsFilter } from "react-icons/bs";
-import {} from "../../../../react-table-config.d"
 
-type TableProps = {
-  children: any;
-};
+
+
 function GlobalFilter({
   preGlobalFilteredRows,
   globalFilter,
@@ -65,7 +62,6 @@ function DefaultColumnFilter({
 }
 
 const UserTable = ({ columns, data, isLoading }: Partial<object> | undefined| any) => {
-  // const details: any = useContext(UserContext);
   const navigate = useNavigate();
   const [showBox, setShowBox] = useState(false);
   const { setErrors} =useContext(AppContext)
@@ -156,7 +152,7 @@ const UserTable = ({ columns, data, isLoading }: Partial<object> | undefined| an
                   </tr>
                 ))}
                 <tr>
-                  {" "}
+               
                   <th
                     colSpan={visibleColumns.length}
                     style={{

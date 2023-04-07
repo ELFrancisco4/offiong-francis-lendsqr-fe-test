@@ -1,21 +1,19 @@
-import { ReactComponent as Menu } from "../../../assets/VectorMenu.svg";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import UserTable from "../molecules/UserTable";
-import axios from "axios";
 import { Loading } from "../../UserDetails/atoms/Loading";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { AppContext } from "../../../context/globalContext";
 
 const TableElement = () => {
-  const {details2, isLoading, setIsLoading} = useContext(AppContext)
+  const { details2, isLoading, setIsLoading } = useContext(AppContext);
 
   //filter function
   function SelectColumnFilter({
     column: { filterValue, setFilter, preFilteredRows, id },
-  }:any) {
+  }: any) {
     const options = React.useMemo(() => {
       const options = new Set();
-      preFilteredRows.forEach((row:any) => {
+      preFilteredRows.forEach((row: any) => {
         options.add(row.values[id]);
       });
       return [...options.values()];
@@ -28,7 +26,7 @@ const TableElement = () => {
         }}
       >
         <option value="">Select</option>
-        {options.map((option:any, i) => (
+        {options.map((option: any, i) => (
           <option key={i} value={option}>
             {option}
           </option>
@@ -83,9 +81,7 @@ const TableElement = () => {
       {
         Header: "",
         accessor: "89",
-        Cell: () =>  <HiOutlineDotsVertical />
-        
-      
+        Cell: () => <HiOutlineDotsVertical />,
       },
     ],
     []

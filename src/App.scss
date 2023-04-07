@@ -8,4 +8,19 @@
     width: 100%;
     height: 100%;
   }
+
+  @media (max-width: 768px) {
+    /* for tablets */
+    &_content {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* for mobile devices */
+    &_content {
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
 }

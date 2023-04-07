@@ -2,11 +2,10 @@ import "../styles/details.scss";
 import { ReactComponent as EmptyStar } from "../../../assets/VectorEmptyStar.svg";
 import { ReactComponent as FilledStar } from "../../../assets/VectorFilledStar.svg";
 import { Link, useParams } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
-import axios from "axios";
+import { useContext } from "react";
 import { Loading } from "../atoms/Loading";
 import { AppContext } from "../../../context/globalContext";
-import Error404 from "../../../pages/error404/Error404";
+
 type prr={
   id: string | number
 }
@@ -31,8 +30,7 @@ const UserPanel = () => {
     );
   }
   const { profile, userName, accountBalance, accountNumber } = details;
-  // console.log(details);
-  // console.log(isLoading)
+      
   return (
     <div className="user_panel">
       <div className="user_panel_container">

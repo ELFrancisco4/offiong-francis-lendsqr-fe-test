@@ -1,9 +1,7 @@
 import "../styles/details.scss";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Table from "./Table";
 import { useContext } from "react";
-
-import axios from "axios";
 import { Loading } from "../atoms/Loading";
 import { AppContext } from "../../../context/globalContext";
 type myRow = {

@@ -1,11 +1,8 @@
 import "../../styles/dashboardpage.scss";
-import UserTable from "./../../components/Dashboard/molecules/UserTable";
 import { IoPeopleOutline } from "react-icons/io5";
 import { AiOutlineFileProtect } from "react-icons/ai";
 import { FaCoins, FaUsers } from "react-icons/fa";
-import { ReactComponent as LoanRecord } from "../../assets/VectorLoanRecord.svg";
-import { useContext } from "react";
-import { usePagination, useTable } from "react-table";
+
 import TableElement from "../../components/Dashboard/atoms/TableElement";
 import UserMetric from "../../components/Dashboard/atoms/UserMetric";
 const DashBoard = () => {
