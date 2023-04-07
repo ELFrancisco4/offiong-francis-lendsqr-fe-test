@@ -5,40 +5,21 @@ import UserPanel from "../../components/UserDetails/molecules/UserPanel";
 import "../../styles/detailspage.scss";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Loading } from "./../../components/UserDetails/atoms/Loading";
-import { DetailsContext } from "../../context/globalContext";
+import { AppContext } from "../../context/globalContext";
+import Error500 from "../error404/Error500";
 
 export type DetailsProps = {
   data: any;
 };
 
 const UserDetailsPage = () => {
-  const [data, setData] = useState<any>({});
-  const [isLoading, setIsLoading] = useState(false);
-  const { id } = useParams();
+  const {errors, setErrors }=useContext(AppContext)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const result = await axios.get(
-          `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/${id}`
-        );
-        setData(result.data);
-      } catch (error) {
-        console.log(error);
-      }
-      setIsLoading(false);
-    };
-
-    fetchData();
-  }, []);
   return (
     <>
-      {isLoading ? (
-        <Loading />
-      ) : (
+       { errors ? (<Error500/>): (
         <div className="details_container">
           <BackButton />
           <div className="details_container_title">
@@ -56,14 +37,39 @@ const UserDetailsPage = () => {
               />
             </span>
           </div>
-          <DetailsContext.Provider value={data}>
+          {/* <DetailsContext.Provider value={data}> */}
             <UserPanel />
             <UserDetails />
-          </DetailsContext.Provider>
-        </div>
-      )}
+          {/* </DetailsContext.Provider> */}
+        </div>)}
+  
     </>
   );
 };
 
 export default UserDetailsPage;
+
+
+// const debouncedFetchData = debounce(fetchData, 500);
+// debouncedFetchData();
+
+
+
+  // const debounce = <T extends (...args: any[]) => any>(
+  //   fn: T,
+  //   delay: number
+  // ) => {
+  //   let timeoutId: ReturnType<typeof setTimeout> | null;
+
+  //   return (...args: Parameters<T>): Promise<ReturnType<T>> =>
+  //     new Promise((resolve) => {
+  //       if (timeoutId) {
+  //         clearTimeout(timeoutId);
+  //       }
+
+  //       timeoutId = setTimeout(() => {
+  //         timeoutId = null;
+  //         resolve(fn(...args));
+  //       }, delay);
+  //     });
+  // };

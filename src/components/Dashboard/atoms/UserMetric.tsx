@@ -1,6 +1,6 @@
 type UserMetricProps = {
   text: string;
-  metric: number
+  metric: number | string
   children: JSX.Element
 }
 

@@ -13,7 +13,7 @@
   --theme-green: #39cd62;
   --light-green: #f3fcf6;
   --text-color: #545f7d;
-  --dashboard-background: #e5e5e5;
+  --dashboard-background: #f8f8f8;
   --black: #000000;
 }
 
@@ -23,7 +23,8 @@
   padding: 0;
 }
 body {
-  font-family: Avenir Next;
+  background-color: var(--dashboard-background);
+  font-family:Work Sans;
 }
 
 h1,

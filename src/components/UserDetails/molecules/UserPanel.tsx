@@ -1,19 +1,44 @@
 import "../styles/details.scss";
 import { ReactComponent as EmptyStar } from "../../../assets/VectorEmptyStar.svg";
 import { ReactComponent as FilledStar } from "../../../assets/VectorFilledStar.svg";
-import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { DetailsContext } from "../../../context/globalContext";
-
+import { Link, useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import { Loading } from "../atoms/Loading";
+import { AppContext } from "../../../context/globalContext";
+import Error404 from "../../../pages/error404/Error404";
+type prr={
+  id: string | number
+}
 const UserPanel = () => {
-  const data: any = useContext(DetailsContext);
-  const {profile, userName, accountBalance, accountNumber } = data
+  const { isLoading, details, setSelectedUser, selectedUser, errors , setErrors} =
+    useContext(AppContext);
+  const { id } = useParams();
+  setSelectedUser(id);
+  console.log(id,"selected", selectedUser);
+
+
+  if (isLoading) {
+    
+    return (
+      <div className="user_panel">
+        <div className="user_panel_container">
+          <div className="user_panel_user">
+            <Loading />
+          </div>
+        </div>
+      </div>
+    );
+  }
+  const { profile, userName, accountBalance, accountNumber } = details;
+  // console.log(details);
+  // console.log(isLoading)
   return (
     <div className="user_panel">
       <div className="user_panel_container">
         <div className="user_panel_user">
           <div className="user_panel_user_avatar">
-            <img src={profile? profile.avatar: null} alt="User Profile Picture" />
+            {profile ? <img src={profile.avatar} /> : " "}
           </div>
 
           <div className="user_panel_user_account_name">

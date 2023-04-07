@@ -1,8 +1,11 @@
 import "../styles/details.scss";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Table from "./Table";
 import { useContext } from "react";
-import { DetailsContext } from "../../../context/globalContext";
+
+import axios from "axios";
+import { Loading } from "../atoms/Loading";
+import { AppContext } from "../../../context/globalContext";
 type myRow = {
   row: {
     original: { profile: { firstName: String; lastName: String } };
@@ -11,7 +14,8 @@ type myRow = {
 };
 
 const UserDetails = () => {
-  const data = useContext(DetailsContext);
+  const {isLoading, details} = useContext(AppContext);
+  
 
   const column1 = React.useMemo(
     () => [
@@ -139,7 +143,15 @@ const UserDetails = () => {
     []
   );
 
-  let dataArray = [data];
+  let dataArray = [details];
+
+  if (isLoading) {
+    return (
+      <div className="user_details">
+        <Loading />
+      </div>
+    );
+  }
   return (
     <div className="user_details">
       <Table columns={column1} data={dataArray} />

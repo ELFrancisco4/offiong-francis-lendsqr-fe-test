@@ -2,11 +2,12 @@ import "../styles/login.scss";
 import Input from "../atoms/Input";
 import React, { useState } from "react";
 import Button from "../atoms/Button";
+import { useNavigate } from "react-router-dom";
 const Form = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [type, setType] = useState<"password" | "text">("password");
-
+  const navigate = useNavigate();
   return (
     <form className="form">
       <div className="form_welcome">
@@ -41,7 +42,9 @@ const Form = () => {
       <a href="#">FORGOT PASSWORD?</a>
       <Button
         className="login_button"
-        onClick={() => console.log(email, password)}
+        onClick={() => {
+          navigate("/dashboard");
+        }}
         text="LOG IN"
       />
     </form>
